@@ -30,5 +30,17 @@ public class Matrix {
                 mat_arr[i][j] = rand;
             }
         }
-    }   
+    }
+
+    public void snakeHorizontal(int row, int bound_low, int bound_high) { // bounds: inclusive, exclusive
+        for (int i = bound_low; i < bound_high; i++) {
+            System.out.println(mat_arr[row][i]);
+        }
+    }
+
+    public void snakeVertical(int col, int bound_low, int bound_high) {
+        for (int i = bound_low; i < bound_high; i++) {
+            System.out.println(mat_arr[i][col]);
+        }
+    }
 }    
