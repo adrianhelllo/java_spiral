@@ -18,8 +18,10 @@ public class Matrix {
             }
             System.out.println();
         }
+        System.out.println("\n\n");
     }
 
+    // fills matrix with random integer values between the min and max parameters, inclusive
     public void fillMatrix(int min, int max) {
         int rand;
 
@@ -32,14 +34,17 @@ public class Matrix {
         }
     }
 
-    public void snakeHorizontal(int row, int bound_low, int bound_high) { // bounds: inclusive, exclusive
-        for (int i = bound_low; i < bound_high; i++) {
-            System.out.println(mat_arr[row][i]);
+    // Object methods for traversing matrix values
+    public void snakeHorizontal(int row, int bound_from, int bound_to) { // bounds: inclusive, exclusive
+        int dir_step = (bound_to > bound_from ) ? 1 : -1;
+        for (int i = bound_from; i != bound_to; i += dir_step) {
+            System.out.print(mat_arr[row][i] + " ");
         }
     }
 
-    public void snakeVertical(int col, int bound_low, int bound_high) {
-        for (int i = bound_low; i < bound_high; i++) {
+    public void snakeVertical(int col, int bound_from, int bound_to) {
+        int dir_step = (bound_to > bound_from) ? 1 : -1;
+        for (int i = bound_from; i != bound_to; i += dir_step) {
             System.out.println(mat_arr[i][col]);
         }
     }

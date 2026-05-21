@@ -3,5 +3,8 @@ public class Main {
         Matrix mat = new Matrix(5, 10);
         mat.fillMatrix(0, 100);
         mat.printMatrix();
+
+        mat.snakeHorizontal(0, 3, 4);
+        mat.snakeVertical(4, 0, 10);
     }
 }
