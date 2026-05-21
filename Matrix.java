@@ -8,6 +8,7 @@ public class Matrix {
         width = w;
         height = h;
         mat_arr = new int[height][width];
+        states = new int[height][width];
     }
 
     // define class method for printing the matrix object
@@ -19,6 +20,16 @@ public class Matrix {
             System.out.println();
         }
         System.out.println("\n\n");
+    }
+
+    public void printState(int new_i, int new_j) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                System.out.print(mat_arr[i][j] + " ");
+            }
+            System.out.println()
+        }
+        
     }
 
     // fills matrix with random integer values between the min and max parameters, inclusive
