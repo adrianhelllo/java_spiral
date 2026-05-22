@@ -1,7 +1,9 @@
 public class Matrix {
+    private String snake = "\u001b[0;32m"; // green color
     private int width;
     private int height;
     private int[][] mat_arr;
+    private int[][] states;
 
     // define constructor
     public Matrix(int w, int h) {
@@ -11,25 +13,16 @@ public class Matrix {
         states = new int[height][width];
     }
 
-    // define class method for printing the matrix object
-    public void printMatrix() {
+    public void printState() {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
+                if (this.states[i][j] == 1) {
+                    System.out.print(snake);
+                }
                 System.out.print(mat_arr[i][j] + " ");
             }
             System.out.println();
         }
-        System.out.println("\n\n");
-    }
-
-    public void printState(int new_i, int new_j) {
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                System.out.print(mat_arr[i][j] + " ");
-            }
-            System.out.println()
-        }
-        
     }
 
     // fills matrix with random integer values between the min and max parameters, inclusive
@@ -46,17 +39,23 @@ public class Matrix {
     }
 
     // Object methods for traversing matrix values
-    public void snakeHorizontal(int row, int bound_from, int bound_to) { // bounds: inclusive, exclusive
+    public void snakeHorizontal(int row, int bound_from, int bound_to) { // bounds: inclusive
         int dir_step = (bound_to > bound_from ) ? 1 : -1;
         for (int i = bound_from; i != bound_to; i += dir_step) {
+            this.states[row][i] = 1;
             System.out.print(mat_arr[row][i] + " ");
+
+            this.printState();
         }
     }
 
-    public void snakeVertical(int col, int bound_from, int bound_to) {
+    public void snakeVertical(int col, int bound_from, int bound_to) { // bounds: inclusive
         int dir_step = (bound_to > bound_from) ? 1 : -1;
         for (int i = bound_from; i != bound_to; i += dir_step) {
+            this.states[i][col] = 1;
             System.out.println(mat_arr[i][col]);
+
+            this.printState();
         }
     }
-}    
+}
