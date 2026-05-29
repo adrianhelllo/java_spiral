@@ -1,5 +1,5 @@
 public class Matrix {
-    private String snake = "\u001b[0;32m"; // green color
+    private String snake_base = "\u001b[0;32m"; // green color
     private String clear = "\u001b[0m";
     private int width;
     private int height;
@@ -22,7 +22,7 @@ public class Matrix {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 if (this.states[i][j] == 1) {
-                    System.out.print(snake);
+                    System.out.print(snake_base);
                 } else {
                     System.out.print(clear);
                 }
@@ -57,19 +57,27 @@ public class Matrix {
     // Object methods for traversing matrix values
     public void snakeHorizontal(int row, int bound_from, int bound_to) { // bounds: inclusive
         int dir_step = (bound_to > bound_from ) ? 1 : -1;
+
+        System.out.println("Horizontal: " + bound_from + " -> " + bound_to + ", Row: " + row + ", Step: " + dir_step);
+
         for (int i = bound_from; i != bound_to; i += dir_step) {
             this.states[row][i] = 1;
-            System.out.println("Snaking horizontally" + row + ", " + i);
-            this.printState();
+            // System.out.println("Snaking horizontally" + i + ", " + row);
+            // this.printState();
         }
+        this.printState();
     }
 
     public void snakeVertical(int col, int bound_from, int bound_to) { // bounds: inclusive
         int dir_step = (bound_to > bound_from) ? 1 : -1;
+
+        System.out.println("Vertical: " + bound_from + " -> " + bound_to + ", Col: " + col + ", Step: " + dir_step);
+
         for (int i = bound_from; i != bound_to; i += dir_step) {
             this.states[i][col] = 1;
-            System.out.println("Snaking vertically" + i + ", " + col); 
-            this.printState();
+            // System.out.println("Snaking vertically " + col + ", " + i); 
+            // this.printState();
         }
+        this.printState();
     }
 }

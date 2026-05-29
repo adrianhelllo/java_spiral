@@ -11,7 +11,7 @@ public class Main {
 
         final int RAND_MIN = 0, RAND_MAX = 100;
         
-        Matrix mat = new Matrix(Y, X, RAND_MIN, RAND_MAX);
+        Matrix mat = new Matrix(X, Y, RAND_MIN, RAND_MAX);
         mat.fillMatrix(RAND_MIN, RAND_MAX);
         
         // initialise loop variables
@@ -20,12 +20,16 @@ public class Main {
 
         while (bx_low != bx_high || by_low != by_high) {
             mat.snakeVertical(bx_low, by_low, by_high);
-            mat.snakeHorizontal(by_high - 1, bx_low, bx_high);
+            mat.snakeHorizontal(by_high - 1, bx_low+1, bx_high);
 
             by_high--;
-            bx_low--;
+            bx_low++;
 
-            mat.snakeVertical(bx_high - 1, by_high, by_low);
+            mat.snakeVertical(bx_high-1, by_high-1, by_low-1);
+            mat.snakeHorizontal(by_low, bx_high-2, bx_low-1);
+
+            bx_high--;
+            by_low++;
         }
     }
 }
